@@ -1,7 +1,6 @@
 use alloc::alloc::{GlobalAlloc, Layout};
 struct KOSAllocator;
 
-// Provided by libc, will be integrated with libc crate later
 extern "C" {
     pub fn memalign(alignment: usize, size: usize) -> *mut u8;
     pub fn free(ptr: *mut u8);

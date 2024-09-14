@@ -1,5 +1,13 @@
+#[cfg(not(feature = "std"))]
 use alloc::ffi::CString;
+#[cfg(not(feature = "std"))]
 use alloc::string::String;
+
+#[cfg(feature = "std")]
+use std::ffi::CString;
+#[cfg(feature = "std")]
+use std::string::String;
+
 use core::ffi::{c_char, c_int};
 
 pub enum DbgLevel {

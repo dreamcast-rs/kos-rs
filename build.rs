@@ -1,4 +1,8 @@
 fn main() {
+    if std::env::var("CARGO_FEATURE_STD").is_ok() {
+        println!("cargo:rustc-link-lib=pthread");
+    }
+
     // Include lib paths from KallistiOS environment
     let kos_ldflags = std::env::var("KOS_LDFLAGS")
         .expect("Missing $KOS_LDFLAGS -- KallistiOS environment not sourced!");
