@@ -1,12 +1,14 @@
 #[cfg(not(feature = "std"))]
-use alloc::ffi::CString;
-#[cfg(not(feature = "std"))]
-use alloc::string::String;
+use alloc::{
+	ffi::CString,
+	string::String,
+};
 
 #[cfg(feature = "std")]
-use std::ffi::CString;
-#[cfg(feature = "std")]
-use std::string::String;
+use std::{
+	ffi::CString,
+	string::String,
+};
 
 use core::ffi::{c_char, c_int};
 
@@ -32,11 +34,22 @@ pub fn dbglog(level: DbgLevel, string: String) {
     }
 }
 
+#[cfg(not(feature = "std"))]
 #[macro_export]
 macro_rules! dbglog {
     ($level:expr, $($arg:expr),+) => {
         {
             $crate::dbglog::dbglog($level, alloc::format!($($arg),+));
+        }
+    };
+}
+
+#[cfg(feature = "std")]
+#[macro_export]
+macro_rules! dbglog {
+    ($level:expr, $($arg:expr),+) => {
+        {
+            $crate::dbglog::dbglog($level, format!($($arg),+));
         }
     };
 }

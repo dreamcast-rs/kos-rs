@@ -4,6 +4,7 @@ use core::ffi::c_char;
 
 pub fn printf(string: String) {
     let c_str = CString::new(string).unwrap();
+
     unsafe {
         extern "C" {
             fn printf(string: *const c_char);
