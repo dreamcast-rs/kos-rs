@@ -7,5 +7,5 @@ edition = "2021"
 crate-type = ["rlib"]
 
 [features]
-default = []
+default = ["std"]
 std = []
