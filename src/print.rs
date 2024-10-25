@@ -14,6 +14,8 @@ pub fn printf(string: String) {
     }
 }
 
+/// For no_std projects, this macro is provided to mimic the print macro
+/// provided by the Rust standard library.
 #[macro_export]
 macro_rules! print {
     ($($arg:tt)*) => {
@@ -23,6 +25,8 @@ macro_rules! print {
     };
 }
 
+/// For no_std projects, this macro is provided to mimic the println macro
+/// provided by the Rust standard library.
 #[macro_export]
 macro_rules! println {
     ($($arg:tt)*) => {
