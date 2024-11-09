@@ -7,7 +7,7 @@ edition = "2021"
 crate-type = ["rlib"]
 
 [dependencies]
-kos-sys = { path = "/opt/toolchains/dc/rust/kos-sys" }
+kos-sys = { package = "kos-sys", git = "https://github.com/dreamcast-rs/kos-sys" }
 
 [patch.crates-io]
 libc = { path = "/opt/toolchains/dc/rust/libc" }
