@@ -1,16 +1,8 @@
-#[cfg(not(feature = "std"))]
-use alloc::{
-	ffi::CString,
-	string::String,
-};
-
-#[cfg(feature = "std")]
+use kos_sys::prelude::*;
 use std::{
 	ffi::CString,
 	string::String,
 };
-
-use core::ffi::{c_char, c_int};
 
 pub enum DbgLevel {
     Dead,
@@ -26,25 +18,10 @@ pub enum DbgLevel {
 pub fn dbglog(level: DbgLevel, string: String) {
     let c_str = CString::new(string).unwrap();
     unsafe {
-        extern "C" {
-            fn dbglog(level: c_int, string: *const c_char);
-        }
-
-        dbglog(level as c_int, c_str.as_ptr() as *const i8);
+        kos_sys::kos::dbglog::dbglog(level as c_int, c_str.as_ptr() as *const i8);
     }
 }
 
-#[cfg(not(feature = "std"))]
-#[macro_export]
-macro_rules! dbglog {
-    ($level:expr, $($arg:expr),+) => {
-        {
-            $crate::dbglog::dbglog($level, alloc::format!($($arg),+));
-        }
-    };
-}
-
-#[cfg(feature = "std")]
 #[macro_export]
 macro_rules! dbglog {
     ($level:expr, $($arg:expr),+) => {
@@ -56,10 +33,6 @@ macro_rules! dbglog {
 
 pub fn dbglog_set_level(level: DbgLevel) {
     unsafe {
-        extern "C" {
-            fn dbglog_set_level(level: c_int);
-        }
-
-        dbglog_set_level(level as c_int);
+        kos_sys::kos::dbglog::dbglog_set_level(level as c_int);
     }
 }

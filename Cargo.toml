@@ -6,6 +6,8 @@ edition = "2021"
 [lib]
 crate-type = ["rlib"]
 
-[features]
-default = ["std"]
-std = []
+[dependencies]
+kos-sys = { path = "/opt/toolchains/dc/rust/kos-sys" }
+
+[patch.crates-io]
+libc = { path = "/opt/toolchains/dc/rust/libc" }
