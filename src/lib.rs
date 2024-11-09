@@ -8,3 +8,6 @@
 
 pub mod dbglog;
 pub mod mem;
+
+// Rexport kos_sys for other crates
+pub use kos_sys;
