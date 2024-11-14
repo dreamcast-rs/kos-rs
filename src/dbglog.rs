@@ -18,7 +18,7 @@ pub enum DbgLevel {
 pub fn dbglog(level: DbgLevel, string: String) {
     let c_str = CString::new(string).unwrap();
     unsafe {
-        kos_sys::kos::dbglog::dbglog(level as c_int, c_str.as_ptr() as *const i8);
+        kos_sys::os::dbglog::dbglog(level as c_int, c_str.as_ptr() as *const i8);
     }
 }
 
@@ -33,6 +33,6 @@ macro_rules! dbglog {
 
 pub fn dbglog_set_level(level: DbgLevel) {
     unsafe {
-        kos_sys::kos::dbglog::dbglog_set_level(level as c_int);
+        kos_sys::os::dbglog::dbglog_set_level(level as c_int);
     }
 }
