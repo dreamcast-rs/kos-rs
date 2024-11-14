@@ -9,5 +9,6 @@
 pub mod dbglog;
 pub mod mem;
 
-// Rexport kos_sys for other crates
+// Re-exports
 pub use kos_sys;
+pub use kos_sys::KOS_INIT_FLAGS as INIT_FLAGS;
