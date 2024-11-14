@@ -11,3 +11,7 @@ kos-sys = { package = "kos-sys", git = "https://github.com/dreamcast-rs/kos-sys"
 
 [patch.crates-io]
 libc = { path = "/opt/toolchains/dc/rust/libc" }
+
+# Uncomment to use local version of kos-sys crate
+#[patch.'https://github.com/dreamcast-rs/kos-sys']
+#kos-sys = { package = "kos-sys", path = "/opt/toolchains/dc/rust/kos-sys" }
