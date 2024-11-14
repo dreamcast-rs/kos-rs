@@ -10,6 +10,7 @@ pub mod dbglog;
 pub mod mem;
 
 // Re-exports
-pub use kos_sys;
+pub use kos_sys as ffi;
 pub use kos_sys::KOS_INIT_FLAGS as INIT_FLAGS;
+#[doc(hidden)]
 pub use kos_sys::libc as libc;
