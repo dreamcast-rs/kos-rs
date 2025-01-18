@@ -12,6 +12,7 @@
 
 pub mod dbglog;
 pub mod mem;
+pub mod video;
 
 // Re-exports
 pub use kos_sys as ffi;
